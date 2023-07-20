@@ -71,3 +71,4 @@ C:\Users\cwrai\workspace\PopQuiz\PopQuiz\obj\Debug\net5.0\refint\PopQuiz.dll
 C:\Users\cwrai\workspace\PopQuiz\PopQuiz\obj\Debug\net5.0\PopQuiz.pdb
 C:\Users\cwrai\workspace\PopQuiz\PopQuiz\obj\Debug\net5.0\PopQuiz.genruntimeconfig.cache
 C:\Users\cwrai\workspace\PopQuiz\PopQuiz\obj\Debug\net5.0\ref\PopQuiz.dll
+C:\Users\cwrai\workspace\PopQuiz\PopQuiz\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
