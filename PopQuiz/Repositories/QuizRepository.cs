@@ -52,6 +52,26 @@ namespace PopQuiz.Repositories
             }
         }
 
+        public void Add(Quiz quiz)
+        {
+            using(var conn = Connection)
+            {
+                conn.Open();
+                using(var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"Insert into Quiz (UserCreatedId,Name,Image,Description)
+                    Output Inserted.Id
+                    Values (@userCreatedId, @name, @image, @description)";
+
+                    DbUtils.AddParameter(cmd,"@userCreatedId", quiz.UserCreatedId);
+                    DbUtils.AddParameter(cmd, "@name", quiz.Name);
+                    DbUtils.AddParameter(cmd, "@image", DbUtils.ValueOrDBNull(quiz.Image));
+                    DbUtils.AddParameter(cmd, "@description", quiz.Description);
+                    quiz.Id = (int)cmd.ExecuteScalar();
+
+                }
+            }
+        }
         public Quiz GetByIdWithQuestions(int id)
         {
             using (var conn = Connection)

@@ -8,5 +8,7 @@ namespace PopQuiz.Repositories
         List<Quiz> GetAll();
 
         public Quiz GetByIdWithQuestions(int id);
+
+        public void Add(Quiz quiz);
     }
 }

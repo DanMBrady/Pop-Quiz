@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PopQuiz.Repositories;
+using PopQuiz.Models;
 
 namespace PopQuiz.Controllers
 {
@@ -31,6 +32,18 @@ namespace PopQuiz.Controllers
                 return NotFound();
             }
             return Ok(quiz);
+        }
+
+        [HttpPost("add")]
+
+        public IActionResult Post(Quiz quiz)
+        {
+            if(quiz == null)
+            {
+                return BadRequest();
+            }
+            _quizRepository.Add(quiz);
+            return CreatedAtAction("Get", new { id = quiz.Id }, quiz);
         }
     }
 }
