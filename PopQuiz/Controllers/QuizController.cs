@@ -20,5 +20,17 @@ namespace PopQuiz.Controllers
         {
             return Ok(_quizRepository.GetAll());
         }
+
+        [HttpGet("GetWithQuestions{id}")]
+
+        public IActionResult Get(int id)
+        {
+            var quiz = _quizRepository.GetByIdWithQuestions(id);
+            if(quiz == null)
+            {
+                return NotFound();
+            }
+            return Ok(quiz);
+        }
     }
 }

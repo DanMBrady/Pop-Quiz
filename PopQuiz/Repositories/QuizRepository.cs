@@ -51,5 +51,65 @@ namespace PopQuiz.Repositories
                 }
             }
         }
+
+        public Quiz GetByIdWithQuestions(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using(var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"select q.Id,q.UserCreatedId,q.Name as Name,q.Image,q.Description,u.Name as UserName,u.Email
+                    ,u.DisplayName,qu.Question,qu.AnswerOne,qu.AnswerTwo,qu.AnswerThree,qu.AnswerFour,qu.CorrectAnswer,qu.Id as QuestionId from quiz q join [User] u on u.Id = q.UserCreatedId 
+                    left join Question qu on q.id = qu.QuizId Where q.Id = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", id);
+
+                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        Quiz quiz = null;
+                        while (reader.Read())
+                        {
+                            if(quiz == null)
+                            {
+                                quiz = new Quiz()
+                                {
+                                    Id = DbUtils.GetInt(reader, "Id"),
+                                    UserCreatedId = DbUtils.GetInt(reader, "UserCreatedId"),
+                                    Name = DbUtils.GetString(reader, "Name"),
+                                    Description = DbUtils.GetString(reader, "Description"),
+                                    User = new User()
+                                    {
+                                        Id = DbUtils.GetInt(reader, "UserCreatedId"),
+                                        Name = DbUtils.GetString(reader, "UserName"),
+                                        Email = DbUtils.GetString(reader, "Email"),
+                                        DisplayName = DbUtils.GetString(reader, "DisplayName")
+                                    },
+                                    Questions = new List<Question>()
+                                };
+                                if (!reader.IsDBNull(reader.GetOrdinal("Image")))
+                                {
+                                    quiz.Image = reader.GetString(reader.GetOrdinal("Image"));
+                                }
+                            }
+                            if (DbUtils.IsNotDbNull(reader, "QuestionId"))
+                            {
+                                quiz.Questions.Add(new Question()
+                                {
+                                    Id = DbUtils.GetInt(reader,"QuestionId"),
+                                    QuizId = DbUtils.GetInt(reader,"Id"),
+                                    MyQuestion = DbUtils.GetString(reader,"Question"),
+                                    AnswerOne = DbUtils.GetString(reader,"AnswerOne"),
+                                    AnswerTwo = DbUtils.GetString(reader,"AnswerTwo"),
+                                    AnswerThree = DbUtils.GetString(reader, "AnswerThree"),
+                                    AnswerFour = DbUtils.GetString(reader, "AnswerFour"),
+                                    CorrectAnswer = DbUtils.GetString(reader, "CorrectAnswer"),
+                                });
+                            }
+                        }
+                        return quiz;
+                    }
+                }
+            }
+        }
     }
 }
