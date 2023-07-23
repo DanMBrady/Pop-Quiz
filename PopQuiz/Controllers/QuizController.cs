@@ -45,5 +45,25 @@ namespace PopQuiz.Controllers
             _quizRepository.Add(quiz);
             return CreatedAtAction("Get", new { id = quiz.Id }, quiz);
         }
+
+        [HttpPut("update/{id}")]
+
+        public IActionResult Put(int id, Quiz quiz)
+        {
+            if(id != quiz.Id)
+            {
+                return BadRequest();
+            }
+            _quizRepository.Update(quiz);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+
+        public IActionResult Delete(int id)
+        {
+            _quizRepository.Delete(id);
+            return NoContent();
+        }
     }
 }

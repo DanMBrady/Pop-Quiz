@@ -72,6 +72,43 @@ namespace PopQuiz.Repositories
                 }
             }
         }
+
+        public void Update(Quiz quiz) { 
+        using(var conn = Connection)
+            {
+                conn.Open();
+                using(var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"Update Quiz Set UserCreatedId = @userCreatedId,
+                    Name = @name, Image = @image, Description = @description
+                    Where Id = @id";
+
+                    DbUtils.AddParameter(cmd, "@userCreatedId", quiz.UserCreatedId);
+                    DbUtils.AddParameter(cmd, "@name", quiz.Name);
+                    DbUtils.AddParameter(cmd, "@image", DbUtils.ValueOrDBNull(quiz.Image));
+                    DbUtils.AddParameter(cmd, "@description", quiz.Description);
+                    DbUtils.AddParameter(cmd, "@id", quiz.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using(var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+
+                    cmd.CommandText = @"Delete From Quiz Where Id = @id";
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
         public Quiz GetByIdWithQuestions(int id)
         {
             using (var conn = Connection)
