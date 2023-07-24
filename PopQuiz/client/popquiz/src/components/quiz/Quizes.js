@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { getAllQuizes } from "../../modules/quizManager";
 import { Card } from "reactstrap";
 import "./Quiz.css"
@@ -22,6 +22,7 @@ export const Quizes =() =>{
         {
             quizes.map(quiz=>{
                 return <div> 
+                    <Link to={`/quiz/${quiz.id}`} className="quizLink">
                     <Card className ="myQuiz">
                         <div className="quizDiv">
                         {
@@ -32,6 +33,7 @@ export const Quizes =() =>{
                     </div>
                     <section>{quiz.name}</section>
                     </Card>
+                    </Link>
                     </div>
             })
         }

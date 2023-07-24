@@ -1,8 +1,8 @@
 .myQuiz{
-    width:220px;
+    width:320px;
     display: flex;
     justify-content: center;
-    margin: 80px;
+    margin: 40px;
 }
 
 .quizList{
@@ -19,8 +19,12 @@
 }
 
 .quizImage{
-    height: 120px;
-    width:220px;
+    height: 180px;
+    width:320px;
     border-radius: 5px;
     object-fit: cover;
+}
+
+.quizLink{
+    text-decoration: none;
 }
