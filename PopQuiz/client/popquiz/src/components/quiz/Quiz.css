@@ -1,0 +1,26 @@
+.myQuiz{
+    width:220px;
+    display: flex;
+    justify-content: center;
+    margin: 80px;
+}
+
+.quizList{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+   
+}
+
+.quizDiv{
+   
+    display: flex;
+    justify-content: center;
+}
+
+.quizImage{
+    height: 120px;
+    width:220px;
+    border-radius: 5px;
+    object-fit: cover;
+}

@@ -17,7 +17,7 @@ export default function Header({ isLoggedIn }) {
 
   return (
     <div>
-      <Navbar >
+      <Navbar color="light" light expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
           Pop Quiz
         </NavbarBrand>
@@ -30,8 +30,16 @@ export default function Header({ isLoggedIn }) {
                 <NavLink tag={RRNavLink} to="/">
                   Home
                 </NavLink>
+                </NavItem>
+            )}
+            {isLoggedIn && (
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/quizes">
+                 Quizes
+                </NavLink>
               </NavItem>
             )}
+
           </Nav>
           <Nav navbar>
             {isLoggedIn && (
