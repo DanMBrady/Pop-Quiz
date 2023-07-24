@@ -9,3 +9,13 @@
     display: flex;
    justify-content: center;
 }
+
+.imageBannerCard{
+    height:300px;
+}
+
+.imageBanner{
+    height: 300px;
+    object-fit: cover;
+   
+}

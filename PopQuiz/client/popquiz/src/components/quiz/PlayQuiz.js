@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getAllQuizQuestions } from "../../modules/quizManager"
 import "./PlayQuiz.css"
+import { Card } from "reactstrap"
 
 
 export const PlayQuiz = () =>{
@@ -45,6 +46,9 @@ export const PlayQuiz = () =>{
       };
 
     return <div>
+        
+            <Card className="imageBannerCard"><img className="imageBanner" src ={quiz?.image}></img></Card>
+        
         Play {quiz?.name}
     
         {
@@ -55,7 +59,7 @@ export const PlayQuiz = () =>{
                 const classFour = `${question.id}-${question.answerFour}`
                 quizTotal++;
                 questionNumber ++
-                return <div>
+                return <div key={question.id}>
                     <section>Question {questionNumber}: {question.myQuestion}</section>
                     <div className="questionDiv">
                     <section><button id={classOne} className="quizButton" onClick={()=>check(question,question.answerOne,classOne,classTwo,classThree,classFour)}>{question.answerOne}</button></section>
