@@ -46,5 +46,13 @@ namespace PopQuiz.Controllers
             _questionRepository.Update(question);
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+
+        public IActionResult Delete(int id)
+        {
+            _questionRepository.Delete(id);
+            return NoContent();
+        }
     }
 }

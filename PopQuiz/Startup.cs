@@ -33,6 +33,7 @@ namespace PopQuiz
         {
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IQuizRepository,QuizRepository>();
+            services.AddTransient<ISavedQuizRepository, SavedQuizRepository>();
             services.AddTransient<IQuestionRepository, QuestionRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");

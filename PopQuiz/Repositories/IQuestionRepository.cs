@@ -10,5 +10,8 @@ namespace PopQuiz.Repositories
         public void Add(Question question);
 
         public void Update(Question question);
+
+
+        public void Delete(int id);
     }
 }

@@ -73,6 +73,8 @@ namespace PopQuiz.Repositories
             }
         }
 
+        
+
         public void Update(Quiz quiz) { 
         using(var conn = Connection)
             {
