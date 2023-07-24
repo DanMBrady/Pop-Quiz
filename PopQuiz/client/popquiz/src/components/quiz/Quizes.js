@@ -16,7 +16,7 @@ export const Quizes =() =>{
     }, []);
 
     return <div>
-        All Quizes
+        All Quizzes
 
         <div className="quizList">
         {

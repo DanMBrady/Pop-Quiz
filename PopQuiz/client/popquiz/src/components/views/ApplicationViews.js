@@ -4,6 +4,7 @@ import { Home } from "../home/Home";
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Quizes } from "../quiz/Quizes";
+import { PlayQuiz } from "../quiz/PlayQuiz";
 
 export default function ApplicationViews({ isLoggedIn, userProfile }) {
     return (
@@ -16,6 +17,7 @@ export default function ApplicationViews({ isLoggedIn, userProfile }) {
             />
             <Route path="login" element={<Login />} />
             <Route path="quizes" element={<Quizes />} />
+            <Route path="quiz/:id" element={<PlayQuiz />} />
             <Route path="register" element={<Register />} />
           </Route>
         </Routes>
