@@ -1,6 +1,9 @@
 
-export const Home =()=>{
+export const Home =({ userProfile })=>{
+   
     return <div>
-        Home Sweet Home
+       
+    Welcome { userProfile?.name}
+        
     </div>
 }

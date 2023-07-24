@@ -35,6 +35,7 @@ namespace PopQuiz
             services.AddTransient<IQuizRepository,QuizRepository>();
             services.AddTransient<ISavedQuizRepository, SavedQuizRepository>();
             services.AddTransient<IQuestionRepository, QuestionRepository>();
+            services.AddTransient<IScoreRepository, ScoreRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
