@@ -16,6 +16,12 @@ namespace PopQuiz.Controllers
             _savedRepository = savedRepository;
         }
 
+
+        [HttpGet("GetByUserId/{userId}")]
+        public IActionResult Get(int userId)
+        {
+            return Ok(_savedRepository.GetAllByUser(userId));
+        }
         [HttpPost("add")]
 
         public IActionResult Post(SavedQuiz savedQuiz)
@@ -26,6 +32,14 @@ namespace PopQuiz.Controllers
             }
             _savedRepository.Add(savedQuiz);
             return CreatedAtAction("Get", new { id = savedQuiz.Id }, savedQuiz);
+        }
+
+        [HttpDelete("{id}")]
+
+        public IActionResult Delete(int id)
+        {
+            _savedRepository.Delete(id);
+            return NoContent();
         }
     }
 }
