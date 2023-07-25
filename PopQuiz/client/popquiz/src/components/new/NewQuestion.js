@@ -47,6 +47,9 @@ export const NewQuestion =({ userProfile })=>{
 return <div>
     {quiz?.name}
     
+    {
+        userProfile?.id === quiz?.userCreatedId ? 
+     <div>
     <form>
             <fieldset>
                 <div>
@@ -139,6 +142,11 @@ return <div>
                 <option value={question.answerFour}>{question.answerFour}</option>
             </select>
             <button onClick={(clickEvent) => buttonEvent(clickEvent)}>Save</button>
+
+            </div>
+
+                    : <div><h3>You did not create this quiz</h3></div>
+                        }
     </div>
 
    
