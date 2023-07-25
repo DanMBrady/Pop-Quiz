@@ -26,7 +26,7 @@ export const Quizes =() =>{
                     <Card className ="myQuiz">
                         <div className="quizDiv">
                         {
-                            quiz.image === null ? 
+                            quiz.image === (null || "") ? 
                             <section><img className="quizImage" src ="https://c1.wallpaperflare.com/preview/544/373/135/sky-dark-blue-partly-cloudy-background.jpg"></img></section>
                             : <section><img className="quizImage" src={quiz.image}></img></section>
                         }

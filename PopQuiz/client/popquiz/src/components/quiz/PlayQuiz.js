@@ -46,8 +46,12 @@ export const PlayQuiz = () =>{
       };
 
     return <div>
-        
-            <Card className="imageBannerCard"><img className="imageBanner" src ={quiz?.image}></img></Card>
+        {
+             quiz.image === (null || "") ? <Card className="imageBannerCard"><img className="imageBanner" 
+             src="https://c1.wallpaperflare.com/preview/544/373/135/sky-dark-blue-partly-cloudy-background.jpg"></img></Card>
+             : <Card className="imageBannerCard"><img className="imageBanner" src ={quiz?.image}></img></Card>
+        }
+           
         
         Play {quiz?.name}
     
@@ -70,5 +74,8 @@ export const PlayQuiz = () =>{
                     </div>
             })
         }
+
+<section><button onClick={()=>navigate(`/${id}/quiz/${quizTotal}/${quizScore}`)} className="continueButton">Continue</button></section>
+
     </div>
 }

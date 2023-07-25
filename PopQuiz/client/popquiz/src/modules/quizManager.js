@@ -9,3 +9,13 @@ export const getAllQuizQuestions =(id)=>{
 return fetch(`${baseUrl}/GetWithQuestions${id}`)
 .then((res)=>res.json())
 }
+
+export const addQuiz = (quiz) =>{
+    return fetch(`${baseUrl}/add`,{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(quiz)
+    });
+};
