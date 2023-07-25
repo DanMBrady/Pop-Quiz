@@ -46,6 +46,13 @@ export default function Header({ isLoggedIn }) {
                 </NavLink>
               </NavItem>
             )}
+            {isLoggedIn && (
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/profile">
+                My Profile
+                </NavLink>
+              </NavItem>
+            )}
 
           </Nav>
           <Nav navbar>
@@ -58,7 +65,9 @@ export default function Header({ isLoggedIn }) {
                     style={{ cursor: "pointer" }}
                     onClick={logout}
                   >
+                    <NavLink tag={RRNavLink} to="/login">
                     Logout
+                    </NavLink>
                   </a>
                 </NavItem>
               </>

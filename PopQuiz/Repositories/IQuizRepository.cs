@@ -14,5 +14,7 @@ namespace PopQuiz.Repositories
         public void Update(Quiz quiz);
 
         public void Delete(int id);
+
+        public List<Quiz> GetAllByUser(int id);
     }
 }

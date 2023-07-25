@@ -22,6 +22,12 @@ namespace PopQuiz.Controllers
             return Ok(_quizRepository.GetAll());
         }
 
+        [HttpGet("GetByUser/{id}")]
+
+        public IActionResult GetByUser(int id)
+        {
+            return Ok(_quizRepository.GetAllByUser(id));
+        }
         [HttpGet("GetWithQuestions{id}")]
 
         public IActionResult Get(int id)

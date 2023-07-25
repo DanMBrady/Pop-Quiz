@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { getAllQuizQuestions } from "../../modules/quizManager"
 import "./PlayQuiz.css"
 import { Card } from "reactstrap"
 
 
-export const PlayQuiz = () =>{
+export const PlayQuiz = ({ userProfile }) =>{
     const [quiz,SetQuiz]=useState()
     const {id} = useParams()
     const navigate = useNavigate()
@@ -52,8 +52,12 @@ export const PlayQuiz = () =>{
              : <Card className="imageBannerCard"><img className="imageBanner" src ={quiz?.image}></img></Card>
         }
            
-        
-        Play {quiz?.name}
+        <section>{quiz?.description}</section>
+       {
+        userProfile?.id === quiz?.userCreatedId ? 
+        <Link to ={`/${quiz?.id}/add`}>Edit</Link>
+        : ""
+       }
     
         {
             quiz?.questions?.map(question=>{

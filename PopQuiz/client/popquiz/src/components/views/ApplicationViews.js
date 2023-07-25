@@ -9,6 +9,7 @@ import { QuizResults } from "../quiz/QuizResults";
 import { NewQuiz } from "../new/NewQuiz";
 import { QuizAdd } from "../new/QuizAdd";
 import { NewQuestion } from "../new/NewQuestion";
+import { Profile } from "../myProfile/Profile";
 
 export default function ApplicationViews({ isLoggedIn, userProfile }) {
     return (
@@ -20,8 +21,9 @@ export default function ApplicationViews({ isLoggedIn, userProfile }) {
               element={isLoggedIn ? <Home userProfile={userProfile}/> : <Navigate to="/login" />}
             />
             <Route path="login" element={<Login />} />
+            <Route path="profile" element={<Profile userProfile={userProfile}/>} />
             <Route path="quizes" element={<Quizes />} />
-            <Route path="quiz/:id" element={<PlayQuiz />} />
+            <Route path="quiz/:id" element={<PlayQuiz userProfile={userProfile}/>} />
             <Route path=":id/newQuestion" element={<NewQuestion userProfile={userProfile}/>} />
             <Route path=":id/add" element={<QuizAdd userProfile={userProfile}/>} />
             <Route path=":id/quiz/:total/:score" element={ <QuizResults/>} />

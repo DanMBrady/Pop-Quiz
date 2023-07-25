@@ -5,6 +5,11 @@ export const getAllQuizes = ()=>{
     .then((res)=>res.json())
 }
 
+export const getAllUserQuizzes = (id)=>{
+    return fetch(`${baseUrl}/GetByUser/${id}`)
+    .then((res)=>res.json())
+}
+
 export const getAllQuizQuestions =(id)=>{
 return fetch(`${baseUrl}/GetWithQuestions${id}`)
 .then((res)=>res.json())
