@@ -3,3 +3,9 @@ appSettings.json
 appSettings.Local.json
 
 .env.local
+
+/.vs
+
+/obj
+
+/bin
