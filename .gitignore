@@ -6,6 +6,6 @@ appSettings.Local.json
 
 /.vs
 
-/obj
+*/obj
 
-/bin
+*/bin
