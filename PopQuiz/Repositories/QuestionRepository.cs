@@ -47,6 +47,43 @@ namespace PopQuiz.Repositories
             }
         }
 
+        public Question GetById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "Select * from Question Where Id = @id";
+                    DbUtils.AddParameter(cmd, "@id", id);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        Question question = null;
+
+                       if (reader.Read())
+                        {
+                            question = new Question()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                QuizId = DbUtils.GetInt(reader, "QuizId"),
+                                MyQuestion = DbUtils.GetString(reader, "Question"),
+                                AnswerOne = DbUtils.GetString(reader, "AnswerOne"),
+                                AnswerTwo = DbUtils.GetString(reader, "AnswerTwo"),
+                                AnswerThree = DbUtils.GetString(reader, "AnswerThree"),
+                                AnswerFour = DbUtils.GetString(reader, "AnswerFour"),
+                                CorrectAnswer = DbUtils.GetString(reader, "CorrectAnswer"),
+
+
+                            };
+                           
+                        }
+                        return question;
+                    }
+                }
+            }
+        }
+
         public void Add(Question question)
         {
             using (var conn = Connection)

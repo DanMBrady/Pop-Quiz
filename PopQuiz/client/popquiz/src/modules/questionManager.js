@@ -9,3 +9,19 @@ return fetch(`${baseUrl}/add`,{
     body:JSON.stringify(question)
 });
 };
+
+export const getQuestionById = (id)=>{
+    return fetch(`${baseUrl}/${id}`)
+    .then((res)=>res.json())
+}
+
+export const updateQuestion = (question) =>{
+
+    return fetch(`${baseUrl}/update/${question.id}`,{
+        method:"PUT",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body:JSON.stringify(question)
+    });
+};

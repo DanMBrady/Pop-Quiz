@@ -23,6 +23,18 @@ namespace PopQuiz.Controllers
             return Ok(_questionRepository.GetAllByQuiz(quizId));
         }
 
+
+        [HttpGet("{id}")]
+
+        public IActionResult GetById(int id)
+        {
+            var question = _questionRepository.GetById(id);
+            if(question == null)
+            {
+                return NotFound();
+            }
+            return Ok(question);
+        }
         [HttpPost("add")]
 
         public IActionResult Post(Question question)
