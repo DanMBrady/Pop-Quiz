@@ -40,3 +40,8 @@ export const deleteQuiz =(id)=>{
         method:"DELETE",
     });
 };
+
+export const getSavedQuizzes =(id)=>{
+    return fetch(`/api/savedquiz/getbyuserid/${id}`)
+    .then((res)=>res.json())
+}

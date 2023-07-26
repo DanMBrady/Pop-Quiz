@@ -9,5 +9,7 @@ namespace PopQuiz.Repositories
         void Add(SavedQuiz savedQuiz);
 
         public void Delete(int id);
+
+        public List<SavedQuiz> GetAllByQuiz(int quizId, int userId);
     }
 }
