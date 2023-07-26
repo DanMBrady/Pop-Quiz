@@ -25,3 +25,9 @@ export const updateQuestion = (question) =>{
         body:JSON.stringify(question)
     });
 };
+
+export const deleteQuestion =(id)=>{
+    return fetch(`${baseUrl}/${id}`,{
+        method:"DELETE",
+    });
+};
