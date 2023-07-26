@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { getQuestionById, updateQuestion } from "../../modules/questionManager"
+import { deleteQuestion, getQuestionById, updateQuestion } from "../../modules/questionManager"
 
 
 export const QuestionEdit =({ userProfile })=>{
@@ -16,6 +16,13 @@ if(!question){
     return null
 }
    
+const deleteButton = (evt)=>{
+    evt.preventDefault()
+    deleteQuestion(question.id)
+    .then(()=>{
+        navigate(`/${question.quizId}/add`)
+    })
+}
 
 const buttonEvent = (event) =>{
     event.preventDefault()
@@ -127,6 +134,7 @@ const buttonEvent = (event) =>{
             </select>
             
             <button onClick={(clickEvent) => buttonEvent(clickEvent)}>Save</button>
+            <button onClick={(clickEvent) => deleteButton(clickEvent)}>Delete</button>
             </div>
 
   
