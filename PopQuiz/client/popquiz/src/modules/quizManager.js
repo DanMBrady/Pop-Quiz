@@ -24,3 +24,19 @@ export const addQuiz = (quiz) =>{
         body: JSON.stringify(quiz)
     });
 };
+
+export const updateQuiz = (quiz) =>{
+    return fetch(`${baseUrl}/update/${quiz.id}`,{
+        method:"PUT",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body:JSON.stringify(quiz)
+    });
+};
+
+export const deleteQuiz =(id)=>{
+    return fetch(`${baseUrl}/${id}`,{
+        method:"DELETE",
+    });
+};

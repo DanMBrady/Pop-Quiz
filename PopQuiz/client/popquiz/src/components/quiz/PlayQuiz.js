@@ -51,7 +51,7 @@ export const PlayQuiz = ({ userProfile }) =>{
              src="https://c1.wallpaperflare.com/preview/544/373/135/sky-dark-blue-partly-cloudy-background.jpg"></img></Card>
              : <Card className="imageBannerCard"><img className="imageBanner" src ={quiz?.image}></img></Card>
         }
-           
+           <h3>{quiz?.name}</h3>
         <section>{quiz?.description}</section>
        {
         userProfile?.id === quiz?.userCreatedId ? 
