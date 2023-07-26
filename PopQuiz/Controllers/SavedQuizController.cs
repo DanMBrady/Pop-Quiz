@@ -41,5 +41,13 @@ namespace PopQuiz.Controllers
             _savedRepository.Delete(id);
             return NoContent();
         }
+
+        [HttpGet("byQuiz/{quizId}/{userId}")]
+        
+        public IActionResult GetByQuiz(int quizId,int userId)
+        {
+            return Ok(_savedRepository.GetAllByQuiz(quizId, userId));
+        }
+
     }
 }

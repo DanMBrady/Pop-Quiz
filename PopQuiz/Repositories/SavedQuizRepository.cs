@@ -35,7 +35,7 @@ namespace PopQuiz.Repositories
                                 QuizId = DbUtils.GetInt(reader,"QuizId"),
                                 Quiz = new Quiz()
                                 {
-                                    Id = DbUtils.GetInt(reader, "Id"),
+                                    Id = DbUtils.GetInt(reader, "QuizId"),
                                     Name = DbUtils.GetString(reader, "Name"),
                                     Description = DbUtils.GetString(reader,"Description")
                                     
@@ -83,6 +83,34 @@ namespace PopQuiz.Repositories
                     cmd.Parameters.AddWithValue("@id", id);
 
                     cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public List<SavedQuiz> GetAllByQuiz(int quizId,int userId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using( var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "Select * from SavedQuiz where userId =@userId And quizId = @quizId";
+                    DbUtils.AddParameter(cmd, "@userId", userId);
+                    DbUtils.AddParameter(cmd, "@quizId", quizId);
+                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        List<SavedQuiz> saved = new List<SavedQuiz>();
+
+                        while (reader.Read())
+                        {
+                            SavedQuiz save = new SavedQuiz()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                            };
+                        saved.Add(save);
+                        }
+                        return saved;
+                    }
                 }
             }
         }
