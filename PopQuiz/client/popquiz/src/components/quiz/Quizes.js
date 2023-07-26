@@ -32,6 +32,7 @@ export const Quizes =() =>{
                         }
                     </div>
                     <section>{quiz.name}</section>
+        
                     </Card>
                     </Link>
                     </div>

@@ -11,6 +11,7 @@ import { QuizAdd } from "../new/QuizAdd";
 import { NewQuestion } from "../new/NewQuestion";
 import { Profile } from "../myProfile/Profile";
 import { QuestionEdit } from "../edit/QuestionEdit";
+import { QuizEdit } from "../edit/QuizEdit";
 
 export default function ApplicationViews({ isLoggedIn, userProfile }) {
     return (
@@ -31,6 +32,7 @@ export default function ApplicationViews({ isLoggedIn, userProfile }) {
             <Route path="newQuiz" element={<NewQuiz userProfile={userProfile}/>} />
             <Route path="register" element={<Register />} />
             <Route path="questionEdit/:id" element={<QuestionEdit userProfile={userProfile}/>} />
+            <Route path="quizEdit/:id" element={<QuizEdit userProfile={userProfile}/>} />
           </Route>
         </Routes>
       </main>
