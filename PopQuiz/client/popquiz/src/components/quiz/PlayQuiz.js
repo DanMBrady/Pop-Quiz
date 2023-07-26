@@ -29,6 +29,7 @@ export const PlayQuiz = ({ userProfile }) =>{
           const buttonThree=document.getElementById(idThree)
           const buttonFour=document.getElementById(idFour)
             button.style.backgroundColor = "green";
+            button.disabled=true
             buttonTwo.disabled=true
             buttonThree.disabled=true
             buttonFour.disabled=true
@@ -39,6 +40,7 @@ export const PlayQuiz = ({ userProfile }) =>{
         const buttonThree=document.getElementById(idThree)
         const buttonFour=document.getElementById(idFour)
         button.style.backgroundColor = "red";
+        button.disabled=true
         buttonTwo.disabled=true
         buttonThree.disabled=true
         buttonFour.disabled=true
