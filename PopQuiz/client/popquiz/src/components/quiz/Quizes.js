@@ -21,7 +21,7 @@ export const Quizes =() =>{
         <div className="quizList">
         {
             quizes.map(quiz=>{
-                return <div> 
+                return <div key ={quiz.id}> 
                     <Link to={`/quiz/${quiz.id}`} className="quizLink">
                     <Card className ="myQuiz">
                         <div className="quizDiv">
