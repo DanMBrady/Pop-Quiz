@@ -206,8 +206,9 @@ namespace PopQuiz.Repositories
                 conn.Open();
                 using(var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"select q.Id,q.UserCreatedId,q.Name as Name,q.Image,q.Description,u.Name as UserName,u.Email
+                    cmd.CommandText = @"select q.Id,q.UserCreatedId,q.Name as Name,q.Image,q.Description,d.Name as Difficulty,q.DifficultyId,u.Name as UserName,u.Email
                     ,u.DisplayName,qu.Question,qu.AnswerOne,qu.AnswerTwo,qu.AnswerThree,qu.AnswerFour,qu.CorrectAnswer,qu.Id as QuestionId from quiz q join [User] u on u.Id = q.UserCreatedId 
+                    join Difficulty d on q.DifficultyId = d.Id
                     left join Question qu on q.id = qu.QuizId Where q.Id = @Id";
                     DbUtils.AddParameter(cmd, "@Id", id);
 
@@ -224,6 +225,12 @@ namespace PopQuiz.Repositories
                                     UserCreatedId = DbUtils.GetInt(reader, "UserCreatedId"),
                                     Name = DbUtils.GetString(reader, "Name"),
                                     Description = DbUtils.GetString(reader, "Description"),
+                                    DifficultyId = DbUtils.GetInt(reader, "DifficultyId"),
+                                    Difficulty = new Difficulty()
+                                    {
+                                        Id = DbUtils.GetInt(reader, "DifficultyId"),
+                                        Name = DbUtils.GetString(reader,"Difficulty")
+                                    },
                                     User = new User()
                                     {
                                         Id = DbUtils.GetInt(reader, "UserCreatedId"),
