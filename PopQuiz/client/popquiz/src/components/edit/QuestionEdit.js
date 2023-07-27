@@ -38,8 +38,9 @@ const buttonEvent = (event) =>{
     <form>
             <fieldset>
                 <div>
-                <input
+                <textarea
                 required
+                className="questionInput"
                 placeholder="Question"
                 value={question.myQuestion}
                 onChange={

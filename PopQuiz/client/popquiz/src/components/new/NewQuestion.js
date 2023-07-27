@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { getAllQuizQuestions } from "../../modules/quizManager"
 import { addQuestion } from "../../modules/questionManager"
+import "./New.css"
 export const NewQuestion =({ userProfile })=>{
     const [quiz,SetQuiz]=useState()
     const {id} = useParams()
@@ -53,8 +54,9 @@ return <div>
     <form>
             <fieldset>
                 <div>
-                <input
+                <textarea
                 required
+                className="questionInput"
                 placeholder="Question"
                 onChange={
                     (evt) =>{

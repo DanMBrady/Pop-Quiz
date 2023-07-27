@@ -17,5 +17,11 @@ namespace PopQuiz.Models
         public string Description { get; set; }
 
         public List<Question> Questions { get; set; }
+
+        public int DifficultyId { get; set; }
+
+        public Difficulty Difficulty { get; set; }
+
+
     }
 }
