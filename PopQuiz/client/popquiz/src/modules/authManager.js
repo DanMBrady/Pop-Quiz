@@ -61,7 +61,7 @@ export const register = (userProfile, password) => {
     .then((createResponse) =>
       _saveUser({
         ...userProfile,
-        firebaseUserId: createResponse.user.uid,
+        firebaseId: createResponse.user.uid,
       })
     );
 };

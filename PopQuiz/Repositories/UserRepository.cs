@@ -35,5 +35,25 @@ namespace PopQuiz.Repositories
                 }
             }
         }
+
+        public void Add(User user)
+        {
+            using( var conn = Connection)
+            {
+                conn.Open();
+                using( var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"Insert into [User] (Name, Email, FirebaseId, DisplayName)
+                                        Output Inserted.Id
+                                        Values (@name, @email, @firebaseId, @displayName)";
+                    DbUtils.AddParameter(cmd, "@name", user.Name);
+                    DbUtils.AddParameter(cmd, "@email", user.Email);
+                    DbUtils.AddParameter(cmd, "@firebaseId", user.FirebaseId);
+                    DbUtils.AddParameter(cmd, "@displayName", user.DisplayName);
+
+                    user.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
     }
 }

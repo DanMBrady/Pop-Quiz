@@ -52,5 +52,14 @@ namespace PopQuiz.Controllers
 
             return Ok(userProfile);
         }
+
+        [HttpPost]
+
+        public IActionResult Post(User user) {
+
+            _userRepository.Add(user);
+            return CreatedAtAction(nameof(GetUserProfile), 
+                new { firebaseUserId = user.FirebaseId}, user);
+        }
     }
 }
