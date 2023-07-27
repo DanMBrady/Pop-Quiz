@@ -19,12 +19,20 @@ const handleSave =(event) =>{
         image:quiz.image,
         userCreatedId:userProfile.id
     }
+
+    if(quiz.name === 'new' || quiz.description === 'description'){
+        const myDiv = document.getElementById("error-div")
+        myDiv.innerHTML="You must have both a name and description"
+    }
+    else{
         addQuiz(myQuiz)
         .then(response=>response.json())
         .then((newQuiz)=>{
         navigate(`/${newQuiz.id}/add`)
         })
     
+
+    }
 }
     return <div>
         <h1>New Quiz</h1>
@@ -80,5 +88,6 @@ const handleSave =(event) =>{
     <button onClick={(clickEvent)=>handleSave(clickEvent)}>Submit</button>
 </form>
 
+<div id="error-div"></div>
     </div>
 }
