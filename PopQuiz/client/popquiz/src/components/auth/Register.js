@@ -20,7 +20,7 @@ export default function Register() {
       const userProfile = {
         name,
         displayName,
-        email,
+        email
       };
       register(userProfile, password).then(() => navigate("/"));
     }
