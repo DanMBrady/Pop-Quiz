@@ -1,25 +1,67 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { getAllQuizQuestions } from "../../modules/quizManager"
+import { checkSavedQuiz, deleteSavedQuiz, getAllQuizQuestions, savedThisQuiz } from "../../modules/quizManager"
 import "./PlayQuiz.css"
 import { Card } from "reactstrap"
 
 
 export const PlayQuiz = ({ userProfile }) =>{
     const [quiz,SetQuiz]=useState()
+    const [checkQuiz,setCheck]=useState([])
     const {id} = useParams()
     const navigate = useNavigate()
 
+    const getCheck =()=>{
+        if(userProfile){
+
+            checkSavedQuiz(id,userProfile.id).then(quiz=>setCheck(quiz))
+        }
+    }
+    useEffect(()=>{
+        getCheck();
+    },[userProfile]);
+    
     useEffect(()=>{
         getAllQuizQuestions(id).then(SetQuiz)
     },[])
-
+    
     if(!quiz){
         return null
     }
+    
+    
+    let savedQuizId = 0
 
+    for(const q of checkQuiz){
+        savedQuizId = q.id
+    }
+
+    const saveButton =(event)=>{
+        event.preventDefault()
+
+        let save = {
+            userId:userProfile.id,
+            quizId:quiz.id
+        }
+
+        savedThisQuiz(save)
+        .then(()=>{
+            getCheck()
+        })
+
+    }
+
+    const deleteButton = (evt)=>{
+        evt.preventDefault()
+        deleteSavedQuiz(savedQuizId)
+        .then(()=>{
+            getCheck()
+        })
+
+    }
+    
+    
     let questionNumber = 0
-
     let quizTotal=0;
     let quizScore=0;
     const check = (question, answer, id,idTwo,idThree,idFour) => {
@@ -58,7 +100,10 @@ export const PlayQuiz = ({ userProfile }) =>{
        {
         userProfile?.id === quiz?.userCreatedId ? 
         <Link to ={`/${quiz?.id}/add`}>Edit</Link>
-        : ""
+        : 
+        
+        checkQuiz.length === 0 ? <button onClick={(evt)=>saveButton(evt)}>Add</button> :
+        <button onClick={(evt)=>deleteButton(evt)}>Remove</button>
        }
     
         {

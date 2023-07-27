@@ -41,7 +41,30 @@ export const deleteQuiz =(id)=>{
     });
 };
 
+export const checkSavedQuiz = (quizId,userId) =>{
+    return fetch(`/api/savedquiz/byquiz/${quizId}/${userId}`)
+    .then((res)=>res.json())
+}
+
 export const getSavedQuizzes =(id)=>{
     return fetch(`/api/savedquiz/getbyuserid/${id}`)
     .then((res)=>res.json())
 }
+
+
+export const savedThisQuiz = (quiz) =>{
+
+    return fetch(`/api/savedquiz/add`,{
+        method:"POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body:JSON.stringify(quiz)
+    });
+};
+
+export const deleteSavedQuiz = (id) =>{
+    return fetch(`/api/savedquiz/${id}`,{
+        method:"DELETE",
+    });
+};
