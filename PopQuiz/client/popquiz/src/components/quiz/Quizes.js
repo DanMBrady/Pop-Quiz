@@ -1,22 +1,30 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { getAllQuizes } from "../../modules/quizManager";
+import { getAllQuizes, getSearchedQuizzes } from "../../modules/quizManager";
 import { Card } from "reactstrap";
 import "./Quiz.css"
 
 export const Quizes =() =>{
     const [quizes, setQuizes] = useState([])
+    const [search, setSearch]=useState("")
     const navigate = useNavigate();
     const getQuizes = ()=>{
         getAllQuizes().then(quizes=> setQuizes(quizes))
     }
+
+    const getQuizzesSearched = ()=>{
+        getSearchedQuizzes(search).then(quizzes=>setQuizes(quizzes))
+    };
 
     useEffect(()=>{
         getQuizes();
     }, []);
 
     return <div>
-        All Quizzes
+        <input placeholder="Search Quizzes" type="text" id="search-id"
+        value={search} onChange={(q)=> (setSearch(q.target.value))}></input>
+        <button onClick={getQuizzesSearched}>Searched Quizzes</button>
+        <button onClick={getQuizes}>All Quizzes</button>
 
         <div className="quizList">
         {

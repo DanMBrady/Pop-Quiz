@@ -5,6 +5,10 @@ export const getAllQuizes = ()=>{
     .then((res)=>res.json())
 }
 
+export const getSearchedQuizzes = (search)=>{
+    return fetch(`${baseUrl}/search?q=${search}`)
+    .then((res)=>res.json())
+}
 export const getAllUserQuizzes = (id)=>{
     return fetch(`${baseUrl}/GetByUser/${id}`)
     .then((res)=>res.json())
