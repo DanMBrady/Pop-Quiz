@@ -71,5 +71,12 @@ namespace PopQuiz.Controllers
             _quizRepository.Delete(id);
             return NoContent();
         }
+
+        [HttpGet("search")]
+
+        public IActionResult Search(string q)
+        {
+            return Ok(_quizRepository.GetAllBySearch(q));
+        }
     }
 }
