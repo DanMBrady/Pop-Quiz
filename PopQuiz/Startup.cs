@@ -32,6 +32,7 @@ namespace PopQuiz
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IDifficultyRepository, DifficultyRepository>();
             services.AddTransient<IQuizRepository,QuizRepository>();
             services.AddTransient<ISavedQuizRepository, SavedQuizRepository>();
             services.AddTransient<IQuestionRepository, QuestionRepository>();

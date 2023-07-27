@@ -97,6 +97,7 @@ export const PlayQuiz = ({ userProfile }) =>{
         }
            <h3>{quiz?.name}</h3>
         <section>{quiz?.description}</section>
+        <section>Difficulty: {quiz?.difficulty?.name}</section>
        {
         userProfile?.id === quiz?.userCreatedId ? 
         <Link to ={`/${quiz?.id}/add`}>Edit</Link>
