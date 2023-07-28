@@ -147,14 +147,15 @@ namespace PopQuiz.Repositories
                 conn.Open();
                 using(var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"Insert into Quiz (UserCreatedId,Name,Image,Description)
+                    cmd.CommandText = @"Insert into Quiz (UserCreatedId,Name,Image,Description,DifficultyId)
                     Output Inserted.Id
-                    Values (@userCreatedId, @name, @image, @description)";
+                    Values (@userCreatedId, @name, @image, @description, @difficultyId)";
 
                     DbUtils.AddParameter(cmd,"@userCreatedId", quiz.UserCreatedId);
                     DbUtils.AddParameter(cmd, "@name", quiz.Name);
                     DbUtils.AddParameter(cmd, "@image", DbUtils.ValueOrDBNull(quiz.Image));
                     DbUtils.AddParameter(cmd, "@description", quiz.Description);
+                    DbUtils.AddParameter(cmd, "@difficultyId", quiz.DifficultyId);
                     quiz.Id = (int)cmd.ExecuteScalar();
 
                 }
@@ -170,13 +171,14 @@ namespace PopQuiz.Repositories
                 using(var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"Update Quiz Set UserCreatedId = @userCreatedId,
-                    Name = @name, Image = @image, Description = @description
+                    Name = @name, Image = @image, Description = @description, DifficultyId = @difficultyId
                     Where Id = @id";
 
                     DbUtils.AddParameter(cmd, "@userCreatedId", quiz.UserCreatedId);
                     DbUtils.AddParameter(cmd, "@name", quiz.Name);
                     DbUtils.AddParameter(cmd, "@image", DbUtils.ValueOrDBNull(quiz.Image));
                     DbUtils.AddParameter(cmd, "@description", quiz.Description);
+                    DbUtils.AddParameter(cmd, "@difficultyId", quiz.DifficultyId);
                     DbUtils.AddParameter(cmd, "@id", quiz.Id);
 
                     cmd.ExecuteNonQuery();
