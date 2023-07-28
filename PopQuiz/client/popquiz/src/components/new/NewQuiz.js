@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { addQuiz } from "../../modules/quizManager";
+import { addQuiz, getAllDifficulties } from "../../modules/quizManager";
 export const NewQuiz =({ userProfile })=>{
     const navigate = useNavigate();
+const [difficulty,setDiff]=useState([])
 const [quiz, setQuiz] = useState({
     name:"new",
     description:"description",
     image:"",
+    difficultyId: 1,
 
 })
+
+useEffect(()=>{
+    getAllDifficulties().then(dif=>setDiff(dif))
+},[])
 
 const handleSave =(event) =>{
     event.preventDefault()
@@ -17,7 +23,8 @@ const handleSave =(event) =>{
         name:quiz.name,
         description:quiz.description,
         image:quiz.image,
-        userCreatedId:userProfile.id
+        userCreatedId:userProfile.id,
+        difficultyId :quiz.difficultyId
     }
 
     if(quiz.name === 'new' || quiz.description === 'description'){
@@ -83,6 +90,23 @@ const handleSave =(event) =>{
                     setQuiz(copy)
                 }
             } />
+        </div>
+    </fieldset>
+    <fieldset>
+        <div>
+            <select onChange={
+                (event)=>{
+                    const copy ={...quiz}
+                    copy.difficultyId = parseInt(event.target.value)
+                    setQuiz(copy)
+                }
+            }>
+                {
+                    difficulty.map(diff=>{
+                        return <option key={diff.id} value={diff.id}>{diff.name}</option>
+                    })
+                }
+            </select>
         </div>
     </fieldset>
     <button onClick={(clickEvent)=>handleSave(clickEvent)}>Submit</button>

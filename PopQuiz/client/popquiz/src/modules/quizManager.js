@@ -4,7 +4,10 @@ export const getAllQuizes = ()=>{
     return fetch(baseUrl)
     .then((res)=>res.json())
 }
-
+export const getAllDifficulties =()=>{
+    return fetch(`/api/difficulty`)
+    .then((res)=>res.json())
+}
 export const getSearchedQuizzes = (search)=>{
     return fetch(`${baseUrl}/search?q=${search}`)
     .then((res)=>res.json())
