@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { deleteQuiz, getAllQuizQuestions, updateQuiz } from "../../modules/quizManager"
-
+import { getAllDifficulties } from "../../modules/quizManager"
 export const QuizEdit =()=>{
     const [quiz,setQuiz]=useState()
+    const [difficulty,setDiff]=useState([])
     const {id} = useParams()
     const navigate = useNavigate()
+
+    useEffect(()=>{
+    getAllDifficulties().then(dif=>setDiff(dif))
+},[])
 
     useEffect(()=>{
         getAllQuizQuestions(id).then(setQuiz)
@@ -32,7 +37,8 @@ export const QuizEdit =()=>{
             userCreatedId:quiz.userCreatedId,
             name:quiz.name,
             image:quiz.image,
-            description:quiz.description
+            description:quiz.description,
+            difficultyId:quiz.difficultyId
 
         }
 
@@ -96,7 +102,26 @@ export const QuizEdit =()=>{
             } />
         </div>
     </fieldset>
-    
+    <fieldset>
+        <section>Select Difficulty</section>
+        <div>
+            <select 
+            value={quiz.difficultyId}
+            onChange={
+                (event)=>{
+                    const copy ={...quiz}
+                    copy.difficultyId = parseInt(event.target.value)
+                    setQuiz(copy)
+                }
+            }>
+                {
+                    difficulty.map(diff=>{
+                        return <option key={diff.id} value={diff.id}>{diff.name}</option>
+                    })
+                }
+            </select>
+        </div>
+    </fieldset>
 </form>
 <button onClick={(clickEvent) => buttonEvent(clickEvent)}>Save</button>
 <button onClick={(clickEvent) => deleteButton(clickEvent)}>Delete</button>

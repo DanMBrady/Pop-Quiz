@@ -93,6 +93,7 @@ const handleSave =(event) =>{
         </div>
     </fieldset>
     <fieldset>
+        <section>Select Difficulty</section>
         <div>
             <select onChange={
                 (event)=>{

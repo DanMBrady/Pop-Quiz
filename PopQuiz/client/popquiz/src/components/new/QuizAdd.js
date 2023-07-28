@@ -31,7 +31,7 @@ export const QuizAdd =({ userProfile })=>{
                {
                 quiz.userCreatedId === userProfile?.id ? <button onClick={()=>navigate(`/${quiz.id}/newQuestion`)}>Add Question</button> : ""
                }
-               
+               <button onClick={()=>navigate(`/quiz/${quiz.id}`)}>Play Quiz</button>
         
         
     </div>
