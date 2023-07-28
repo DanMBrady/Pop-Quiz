@@ -61,6 +61,7 @@ export const PlayQuiz = ({ userProfile }) =>{
     }
     
     
+    
     let questionNumber = 0
     let quizTotal=0;
     let quizScore=0;
