@@ -28,7 +28,7 @@ export default function ApplicationViews({ isLoggedIn, userProfile }) {
             <Route path="quiz/:id" element={<PlayQuiz userProfile={userProfile}/>} />
             <Route path=":id/newQuestion" element={<NewQuestion userProfile={userProfile}/>} />
             <Route path=":id/add" element={<QuizAdd userProfile={userProfile}/>} />
-            <Route path=":id/quiz/:total/:score" element={ <QuizResults/>} />
+            <Route path=":id/quiz/:scoreId" element={ <QuizResults/>} />
             <Route path="newQuiz" element={<NewQuiz userProfile={userProfile}/>} />
             <Route path="register" element={<Register />} />
             <Route path="questionEdit/:id" element={<QuestionEdit userProfile={userProfile}/>} />
