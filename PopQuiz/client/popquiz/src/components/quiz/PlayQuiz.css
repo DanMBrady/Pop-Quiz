@@ -19,3 +19,19 @@
     object-fit: cover;
    
 }
+
+.upperQuiz{
+    margin-left: 10px;
+}
+
+.quizQuestion{
+    margin-left: 10px;
+    margin-top: 10px; 
+}
+
+.quizButtonTwo{
+    margin-left: 10px;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+}
+

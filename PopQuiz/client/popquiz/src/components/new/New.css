@@ -3,3 +3,59 @@
     height: 200px;
     resize: none;
 }
+
+.quizAddButton{
+    margin-left: 0px;
+}
+
+.formOuter{
+background: rgb(240, 238, 238);
+display: flex;
+justify-content: center;
+align-items: center;
+height: 700px;
+}
+
+.formInner{
+background: white;
+width:400px;
+height: 500px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+
+.topForm{
+    background:#143363;
+    color:white;
+    height: 100px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.newButton{
+    background:#143363;
+    color:white;
+    width:360px;
+    margin-top: 30px;
+}
+.myForm{
+    height:400px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+   
+}
+
+.newForm{
+    margin-top:5px;
+    margin-bottom: 30px;
+    width:360px;
+}
+

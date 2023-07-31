@@ -26,7 +26,7 @@ export const Profile =({ userProfile })=>{
 
     return <div>
       
-    <h2>My Quizzes </h2>
+    <h3 className="upperQuiz">My Quizzes </h3>
        <div className="quizList">
         {
             quizes?.map(quiz=>{
@@ -49,7 +49,7 @@ export const Profile =({ userProfile })=>{
         }
 
         </div>
-        <h2>Saved Quizzes</h2>
+        <h3 className="upperQuiz">Saved Quizzes</h3>
         <div className="quizList">
         {
             saved?.map(quiz=>{

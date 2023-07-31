@@ -94,7 +94,7 @@ export const PlayQuiz = ({ userProfile }) =>{
           const buttonTwo=document.getElementById(idTwo)
           const buttonThree=document.getElementById(idThree)
           const buttonFour=document.getElementById(idFour)
-            button.style.backgroundColor = "green";
+            button.style.backgroundColor = "rgb(35, 151, 35)";
             button.disabled=true
             buttonTwo.disabled=true
             buttonThree.disabled=true
@@ -105,7 +105,7 @@ export const PlayQuiz = ({ userProfile }) =>{
         const buttonTwo=document.getElementById(idTwo)
         const buttonThree=document.getElementById(idThree)
         const buttonFour=document.getElementById(idFour)
-        button.style.backgroundColor = "red";
+        button.style.backgroundColor = "rgb(247, 27, 27)";
         button.disabled=true
         buttonTwo.disabled=true
         buttonThree.disabled=true
@@ -119,6 +119,8 @@ export const PlayQuiz = ({ userProfile }) =>{
              src="https://c1.wallpaperflare.com/preview/544/373/135/sky-dark-blue-partly-cloudy-background.jpg"></img></Card>
              : <Card className="imageBannerCard"><img className="imageBanner" src ={quiz?.image}></img></Card>
         }
+
+        <section className="upperQuiz">
            <h3>{quiz?.name}</h3>
         <section>{quiz?.description}</section>
         <section>Difficulty: {quiz?.difficulty?.name}</section>
@@ -130,6 +132,8 @@ export const PlayQuiz = ({ userProfile }) =>{
         checkQuiz.length === 0 ? <button onClick={(evt)=>saveButton(evt)}>Add</button> :
         <button onClick={(evt)=>deleteButton(evt)}>Remove</button>
        }
+
+        </section>
     
         {
             quiz?.questions?.map(question=>{
@@ -140,7 +144,7 @@ export const PlayQuiz = ({ userProfile }) =>{
                 quizTotal++;
                 questionNumber ++
                 return <div key={question.id}>
-                    <section>Question {questionNumber}: {question.myQuestion}</section>
+                    <section className="quizQuestion">Question {questionNumber}: {question.myQuestion}</section>
                     <div className="questionDiv">
                     <section><button id={classOne} className="quizButton" onClick={()=>check(question,question.answerOne,classOne,classTwo,classThree,classFour)}>{question.answerOne}</button></section>
                     <section><button id={classTwo} className="quizButton" onClick={()=>check(question,question.answerTwo,classTwo,classOne,classThree,classFour)}>{question.answerTwo}</button></section>
@@ -151,7 +155,7 @@ export const PlayQuiz = ({ userProfile }) =>{
             })
         }
 
-<section><button onClick={(clickEvent)=> send(clickEvent)} className="continueButton">Continue</button></section>
+<section><button onClick={(clickEvent)=> send(clickEvent)} className="quizButtonTwo">Continue</button></section>
 
         <div id="error-div"></div>
     </div>

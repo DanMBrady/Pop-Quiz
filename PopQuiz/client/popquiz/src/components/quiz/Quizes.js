@@ -21,11 +21,13 @@ export const Quizes =() =>{
     }, []);
 
     return <div>
+        <h3 className="upperQuiz">Quizzes</h3>
+        <div className="upperQuiz">
         <input placeholder="Search Quizzes" type="text" id="search-id"
         value={search} onChange={(q)=> (setSearch(q.target.value))}></input>
         <button onClick={getQuizzesSearched}>Searched Quizzes</button>
         <button onClick={getQuizes}>All Quizzes</button>
-
+        </div>
         <div className="quizList">
         {
             quizes.map(quiz=>{

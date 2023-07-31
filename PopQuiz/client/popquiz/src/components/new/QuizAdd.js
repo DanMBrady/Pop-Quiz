@@ -20,7 +20,7 @@ export const QuizAdd =({ userProfile })=>{
              src="https://c1.wallpaperflare.com/preview/544/373/135/sky-dark-blue-partly-cloudy-background.jpg"></img></Card>
              : <Card className="imageBannerCard"><img className="imageBanner" src ={quiz?.image}></img></Card>
         }
-        <section><Link to={`/quizEdit/${quiz.id}`}className="quizLink">Change Name-Description-Image</Link></section>
+        <section ><Link to={`/quizEdit/${quiz.id}`}className="quizLink">Change Name-Description-Image</Link></section>
              {
                 quiz?.questions.map(question =>{
                     return <div key={question.id}>
@@ -31,7 +31,7 @@ export const QuizAdd =({ userProfile })=>{
                {
                 quiz.userCreatedId === userProfile?.id ? <button onClick={()=>navigate(`/${quiz.id}/newQuestion`)}>Add Question</button> : ""
                }
-               <button onClick={()=>navigate(`/quiz/${quiz.id}`)}>Play Quiz</button>
+               <button className="quizAddButton" onClick={()=>navigate(`/quiz/${quiz.id}`)}>Play Quiz</button>
         
         
     </div>
