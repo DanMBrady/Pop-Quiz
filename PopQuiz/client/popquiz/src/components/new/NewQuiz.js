@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { addQuiz, getAllDifficulties } from "../../modules/quizManager";
+import "./New.css"
 export const NewQuiz =({ userProfile })=>{
     const navigate = useNavigate();
 const [difficulty,setDiff]=useState([])
@@ -41,15 +42,19 @@ const handleSave =(event) =>{
 
     }
 }
-    return <div>
-        <h1>New Quiz</h1>
+    return <div className="formOuter">
+        <div className="formInner">
+            <div className="topForm">
+           Create New Quiz
+            </div>
+            <div className="myForm">
 <form>
     <fieldset>
         <div>
             <input
             required
             type="text"
-            className="newName"
+            className="newForm"
             placeholder="Quiz Name"
             onChange={
                 (evt) =>{
@@ -65,7 +70,7 @@ const handleSave =(event) =>{
             <input
             required
             type="text"
-            className="newName"
+            className="newForm"
             placeholder="Quiz Description"
             onChange={
                 (evt) =>{
@@ -81,7 +86,7 @@ const handleSave =(event) =>{
             <input
             required
             type="text"
-            className="newName"
+            className="newForm"
             placeholder="Quiz Image"
             onChange={
                 (evt) =>{
@@ -104,15 +109,17 @@ const handleSave =(event) =>{
             }>
                 {
                     difficulty.map(diff=>{
-                        return <option key={diff.id} value={diff.id}>{diff.name}</option>
+                        return <option className="diffOption" key={diff.id} value={diff.id}>{diff.name}</option>
                     })
                 }
             </select>
         </div>
     </fieldset>
-    <button onClick={(clickEvent)=>handleSave(clickEvent)}>Submit</button>
+    <button className="newButton" onClick={(clickEvent)=>handleSave(clickEvent)}>Submit</button>
 </form>
 
 <div id="error-div"></div>
+</div>
+    </div>
     </div>
 }
