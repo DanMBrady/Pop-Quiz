@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { checkSavedQuiz, deleteSavedQuiz, getAllQuizQuestions, savedThisQuiz } from "../../modules/quizManager"
 import "./PlayQuiz.css"
 import { Card } from "reactstrap"
+import { addScore } from "../../modules/scoreManager"
 
 
 export const PlayQuiz = ({ userProfile }) =>{
@@ -65,6 +66,28 @@ export const PlayQuiz = ({ userProfile }) =>{
     let questionNumber = 0
     let quizTotal=0;
     let quizScore=0;
+    const send =(event)=>{
+        event.preventDefault()
+
+        let score={
+            myScore:(Math.round((quizScore/quizTotal)*100)),
+            quizId:parseInt(id),
+            userId:userProfile.id
+        }
+
+        if(quizTotal === 0){
+            const myDiv = document.getElementById("error-div")
+            myDiv.innerHTML="This quiz does not have any questions yet"
+        }
+        else{
+            addScore(score)
+            .then(response=>response.json())
+            .then((newScore)=>{
+                navigate(`/${id}/quiz/${newScore.id}`)
+            })
+        }
+
+    }
     const check = (question, answer, id,idTwo,idThree,idFour) => {
         if (question.correctAnswer === answer) {
           const button = document.getElementById(id);
@@ -128,7 +151,8 @@ export const PlayQuiz = ({ userProfile }) =>{
             })
         }
 
-<section><button onClick={()=>navigate(`/${id}/quiz/${quizTotal}/${quizScore}`)} className="continueButton">Continue</button></section>
+<section><button onClick={(clickEvent)=> send(clickEvent)} className="continueButton">Continue</button></section>
 
+        <div id="error-div"></div>
     </div>
 }

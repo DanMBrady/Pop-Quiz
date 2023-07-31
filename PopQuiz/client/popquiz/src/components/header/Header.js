@@ -10,6 +10,8 @@ import {
   NavLink,
 } from "reactstrap";
 import { logout } from "../../modules/authManager";
+import "../photos/logo.png"
+import "./Header.css"
 
 export default function Header({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
