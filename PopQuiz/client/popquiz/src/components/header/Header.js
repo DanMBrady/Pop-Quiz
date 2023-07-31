@@ -10,7 +10,7 @@ import {
   NavLink,
 } from "reactstrap";
 import { logout } from "../../modules/authManager";
-import "../photos/logo.png"
+import logo from"../photos/logo.png"
 import "./Header.css"
 
 export default function Header({ isLoggedIn }) {
@@ -19,21 +19,14 @@ export default function Header({ isLoggedIn }) {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar className="headerColor" dark="true" light expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
           Pop Quiz
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            {/* When isLoggedIn === true, we will render the Home link */}
-            {isLoggedIn && (
-              <NavItem>
-                <NavLink tag={RRNavLink} to="/">
-                  Home
-                </NavLink>
-                </NavItem>
-            )}
+          
             {isLoggedIn && (
               <NavItem>
                 <NavLink tag={RRNavLink} to="/quizes">
