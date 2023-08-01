@@ -26,13 +26,16 @@ export default function Register() {
     }
   };
 
-  return (
-    <Form onSubmit={registerClick}>
+  return <div className="formOuter">
+    <div className="rFormInner">
+      <div className="topForm">Register Form</div>
+    <Form className="rMyForm" onSubmit={registerClick}>
       <fieldset>
         <FormGroup>
           <Label htmlFor="Name">Name</Label>
           <Input
             id="firstName"
+            className="qNewForm"
             type="text"
             onChange={(e) => setName(e.target.value)}
           />
@@ -41,6 +44,7 @@ export default function Register() {
           <Label htmlFor="displayName">Display Name</Label>
           <Input
             id="displayName"
+            className="qNewForm"
             type="text"
             onChange={(e) => setDisplayName(e.target.value)}
           />
@@ -49,6 +53,7 @@ export default function Register() {
           <Label for="email">Email</Label>
           <Input
             id="email"
+            className="qNewForm"
             type="text"
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -57,6 +62,7 @@ export default function Register() {
           <Label for="password">Password</Label>
           <Input
             id="password"
+            className="qNewForm"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -65,14 +71,16 @@ export default function Register() {
           <Label for="confirmPassword">Confirm Password</Label>
           <Input
             id="confirmPassword"
+            className="qNewForm"
             type="password"
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
-          <Button>Register</Button>
+          <button className="qNewButton">Register</button>
         </FormGroup>
       </fieldset>
     </Form>
-  );
+    </div>
+  </div>
 }

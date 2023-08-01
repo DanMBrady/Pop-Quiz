@@ -16,15 +16,19 @@ export default function Login() {
       .catch(() => alert("Invalid email or password"));
   };
 
-  return (
-    <Form onSubmit={loginSubmit}>
+  return <div className="formOuter">
+    <div className="qFormInner">
+      <div className="topForm">Login Form</div>
+
+    <Form className="qMyForm" onSubmit={loginSubmit}>
       <fieldset>
         <FormGroup>
           <Label for="email">Email</Label>
           <Input
             id="email"
+            className="lNewForm"
             type="text"
-            autoFocus
+            
             onChange={(e) => setEmail(e.target.value)}
           />
         </FormGroup>
@@ -32,17 +36,19 @@ export default function Login() {
           <Label for="password">Password</Label>
           <Input
             id="password"
+            className="lNewForm"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
-          <Button>Login</Button>
+          <button className="qNewButton">Login</button>
         </FormGroup>
         <em>
           Not registered? <Link to="/register">Register</Link>
         </em>
       </fieldset>
     </Form>
-  );
+    </div>
+  </div>
 }

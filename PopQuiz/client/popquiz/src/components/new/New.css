@@ -37,6 +37,14 @@ border-top-left-radius: 10px;
 border-top-right-radius: 10px;
 }
 
+.rFormInner{ 
+    background: white;
+    width:500px;
+    height: 650px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    }
 .topForm{
     background:#143363;
     color:white;
@@ -78,6 +86,15 @@ border-top-right-radius: 10px;
     display: flex;
 }
 
+.rMyForm{
+    height:550px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
 .newForm{
     margin-top:5px;
     margin-bottom: 30px;
@@ -89,6 +106,13 @@ border-top-right-radius: 10px;
     margin-bottom: 20px;
     width:440px;
 }
+
+.lNewForm{
+    margin-top:3px;
+    margin-bottom: 50px;
+    width:440px;
+}
+
 
 .diffDiv{
    
