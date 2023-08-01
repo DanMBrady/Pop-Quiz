@@ -1,7 +1,9 @@
 .questionInput{
-    width:500px;
-    height: 200px;
+    width:440px;
+    height: 70px;
     resize: none;
+    margin-top:5px;
+    margin-bottom: 20px;
 }
 
 .quizAddButton{
@@ -20,6 +22,16 @@ height: 700px;
 background: white;
 width:400px;
 height: 500px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+
+}
+
+.qFormInner{ 
+background: white;
+width:500px;
+height: 600px;
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 border-top-left-radius: 10px;
 border-top-right-radius: 10px;
@@ -43,14 +55,27 @@ border-top-right-radius: 10px;
     width:360px;
     margin-top: 30px;
 }
+
+.qNewButton{
+    background:#143363;
+    color:white;
+    width:440px;
+    margin-top: 20px;
+}
 .myForm{
     height:400px;
-    padding: 10px;
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-   
-   
+    display: flex;
+}
+
+.qMyForm{
+    height:500px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .newForm{
@@ -59,3 +84,24 @@ border-top-right-radius: 10px;
     width:360px;
 }
 
+.qNewForm{
+    margin-top:3px;
+    margin-bottom: 20px;
+    width:440px;
+}
+
+.diffDiv{
+   
+    width:360px;
+}
+
+.qSelect{
+    display: flex;
+    flex-direction: column;
+    width:440px;
+}
+
+.qMySelect{
+    width:150px;
+    
+}

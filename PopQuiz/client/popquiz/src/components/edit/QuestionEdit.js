@@ -32,10 +32,12 @@ const buttonEvent = (event) =>{
         navigate(`/${question.quizId}/add`)
     })
 }
-   return <div>Edit Question
+   return <div className="formOuter">
 
+    <div className="qFormInner">
+        <div className="topForm">Edit Question</div>
 <div>
-    <form>
+    <form className="qMyForm">
             <fieldset>
                 <div>
                 <textarea
@@ -56,6 +58,7 @@ const buttonEvent = (event) =>{
                 <div>
                 <input
                 required
+                className="qNewForm"
                 placeholder="Choice"
                 value={question.answerOne}
                 onChange={
@@ -72,6 +75,7 @@ const buttonEvent = (event) =>{
                 <div>
                 <input
                 required
+                className="qNewForm"
                 placeholder="Choice"
                 value={question.answerTwo}
                 onChange={
@@ -88,6 +92,7 @@ const buttonEvent = (event) =>{
                 <div>
                 <input
                 required
+                className="qNewForm"
                 placeholder="Choice"
                 value={question.answerThree}
                 onChange={
@@ -104,6 +109,7 @@ const buttonEvent = (event) =>{
                 <div>
                 <input
                 required
+                className="qNewForm"
                 placeholder="Choice"
                 value={question.answerFour}
                 onChange={
@@ -116,9 +122,10 @@ const buttonEvent = (event) =>{
                
                 </div>
             </fieldset>
-        </form>
-        <h2>Select Correct Answer</h2>
+            <section className="qSelect">
+        Select Correct Answer
             <select 
+            className="qMySelect"
             onChange ={
                 (event) =>{
                     const copy ={...question}
@@ -133,11 +140,12 @@ const buttonEvent = (event) =>{
                 <option value={question.answerThree}>{question.answerThree}</option>
                 <option value={question.answerFour}>{question.answerFour}</option>
             </select>
-            
-            <button onClick={(clickEvent) => buttonEvent(clickEvent)}>Save</button>
-            <button onClick={(clickEvent) => deleteButton(clickEvent)}>Delete</button>
+            </section>
+            <button className="qNewButton" onClick={(clickEvent) => buttonEvent(clickEvent)}>Save</button>
+            <button className="qNewButton" onClick={(clickEvent) => deleteButton(clickEvent)}>Delete</button>
+        </form>
             </div>
 
-  
+  </div>
     </div>
 }

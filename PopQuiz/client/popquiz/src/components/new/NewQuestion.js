@@ -45,13 +45,15 @@ export const NewQuestion =({ userProfile })=>{
     if(!quiz){
         return null
     }
-return <div>
-    {quiz?.name}
+return <div className="formOuter">
+    
     
     {
         userProfile?.id === quiz?.userCreatedId ? 
+        <div className="qFormInner">
+            <div className="topForm">Create New Question</div>
      <div>
-    <form>
+    <form className="qMyForm">
             <fieldset>
                 <div>
                 <textarea
@@ -71,6 +73,7 @@ return <div>
                 <div>
                 <input
                 required
+                className="qNewForm"
                 placeholder="Choice"
                 onChange={
                     (evt) =>{
@@ -86,6 +89,7 @@ return <div>
                 <div>
                 <input
                 required
+                className="qNewForm"
                 placeholder="Choice"
                 onChange={
                     (evt) =>{
@@ -101,6 +105,7 @@ return <div>
                 <div>
                 <input
                 required
+                className="qNewForm"
                 placeholder="Choice"
                 onChange={
                     (evt) =>{
@@ -116,6 +121,7 @@ return <div>
                 <div>
                 <input
                 required
+                className="qNewForm"
                 placeholder="Choice"
                 onChange={
                     (evt) =>{
@@ -127,9 +133,10 @@ return <div>
                
                 </div>
             </fieldset>
-        </form>
-        <h2>Select Correct Answer</h2>
-            <select onChange ={
+        <section className="qSelect">Select Correct Answer
+            <select 
+            className="qMySelect"
+            onChange ={
                 (event) =>{
                     const copy ={...question}
                     copy.correctAnswer = event.target.value
@@ -143,8 +150,11 @@ return <div>
                 <option value={question.answerThree}>{question.answerThree}</option>
                 <option value={question.answerFour}>{question.answerFour}</option>
             </select>
-            <button onClick={(clickEvent) => buttonEvent(clickEvent)}>Save</button>
+            </section>
+            <button className="qNewButton" onClick={(clickEvent) => buttonEvent(clickEvent)}>Save</button>
+        </form>
 
+            </div>
             </div>
 
                     : <div><h3>You did not create this quiz</h3></div>
