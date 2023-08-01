@@ -47,16 +47,19 @@ export const QuizEdit =()=>{
             navigate(`/${quiz.id}/add`)
         })
     }
-    return<div>
-        Edit Quiz
+    return<div className="formOuter">
+        <div className="formInner">
 
-        <form>
+             <div className="topForm">Edit Quiz</div>
+        
+            <div className="myForm">
+        <form className="myForm">
     <fieldset>
         <div>
             <input
             required
             type="text"
-            className="newName"
+            className="newForm"
             value={quiz.name}
             placeholder="Quiz Name"
             onChange={
@@ -73,7 +76,7 @@ export const QuizEdit =()=>{
             <input
             required
             type="text"
-            className="newName"
+            className="newForm"
             value={quiz.description}
             placeholder="Quiz Description"
             onChange={
@@ -90,7 +93,7 @@ export const QuizEdit =()=>{
             <input
             required
             type="text"
-            className="newName"
+            className="newForm"
             value={quiz.image}
             placeholder="Quiz Image"
             onChange={
@@ -104,7 +107,7 @@ export const QuizEdit =()=>{
     </fieldset>
     <fieldset>
         <section>Select Difficulty</section>
-        <div>
+        <div className="diffDiv">
             <select 
             value={quiz.difficultyId}
             onChange={
@@ -122,8 +125,10 @@ export const QuizEdit =()=>{
             </select>
         </div>
     </fieldset>
+<button className="newButton" onClick={(clickEvent) => buttonEvent(clickEvent)}>Save</button>
+<button className="newButton" onClick={(clickEvent) => deleteButton(clickEvent)}>Delete</button>
 </form>
-<button onClick={(clickEvent) => buttonEvent(clickEvent)}>Save</button>
-<button onClick={(clickEvent) => deleteButton(clickEvent)}>Delete</button>
+</div>
+</div>
     </div>
 }
