@@ -20,7 +20,7 @@ export default function ApplicationViews({ isLoggedIn, userProfile }) {
           <Route path="/">
             <Route
               index
-              element={isLoggedIn ? <Home userProfile={userProfile}/> : <Navigate to="/login" />}
+              element={isLoggedIn ? <Quizes userProfile={userProfile}/> : <Navigate to="/login" />}
             />
             <Route path="login" element={<Login />} />
             <Route path="profile" element={<Profile userProfile={userProfile}/>} />
