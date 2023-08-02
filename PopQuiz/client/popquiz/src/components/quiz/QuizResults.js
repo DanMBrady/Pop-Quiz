@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getAllScores } from "../../modules/scoreManager"
+import { getAllScores, getScoreById } from "../../modules/scoreManager"
 import"./QuizResults.css"
 import { Card } from "reactstrap"
 
@@ -8,6 +8,7 @@ export const QuizResults =()=>{
     const {id}=useParams()
    const {scoreId} = useParams()
     const [scores,setScores]= useState()
+    const [s,setS]=useState()
 
     useEffect(()=>{
         if(id){
@@ -15,21 +16,23 @@ export const QuizResults =()=>{
         }
     },[])
    
+    useEffect(()=>{
+        if(scoreId){
+
+            getScoreById(scoreId).then(setS)
+        }
+    },[])
+    if(!s){
+        return null
+    }
     return <div className="resultsDiv">
        
         <div className="myScoreDiv">
-        {
-            scores?.map(s=>{
-                {
+      <section key={s.id} className="myScoreOuter">You Scored {s?.myScore} Points</section>
                     
-                    if(s.id === parseInt(scoreId)){
-                        return <section key={s.id} className="myScoreOuter">You Scored {s.myScore} Points</section>
-                    }
-                }
-               
-             } )
                 
-        }
+               
+             
         </div>
       <div className="leaderboardDiv">
         <section className="myScore">Leaderboard</section>

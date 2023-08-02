@@ -19,7 +19,7 @@ export default function Header({ isLoggedIn }) {
 
   return (
     <div>
-      <Navbar className="headerColor" dark="true" light expand="md">
+      <Navbar className="headerColor" dark={true} light expand="md">
         <NavbarBrand >
           Pop Quiz
         </NavbarBrand>

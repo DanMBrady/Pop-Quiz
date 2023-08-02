@@ -31,6 +31,40 @@ namespace PopQuiz.Repositories
             }
         }
 
+        public Score GetById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using(var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "select s.Id,s.Score,s.QuizId,s.UserId,u.Name,u.DisplayName from score s join [user] u on u.Id = s.UserId where s.Id = @id";
+                    DbUtils.AddParameter(cmd, "@id", id);
+                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        Score score = null;
+
+                        if(reader.Read())
+                        {
+                            score = new Score()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                QuizId = DbUtils.GetInt(reader, "QuizId"),
+                                MyScore = DbUtils.GetInt(reader, "Score"),
+                                UserId = DbUtils.GetInt(reader, "UserId"),
+                                User = new User()
+                                {
+                                    Id = DbUtils.GetInt(reader, "UserId"),
+                                    Name = DbUtils.GetString(reader, "Name"),
+                                    DisplayName = DbUtils.GetString(reader, "DisplayName")
+                                }
+                            };
+                        }
+                        return score;
+                    }
+                }
+            }
+        }
         public List<Score> GetAllFromQuiz(int quizId) { 
 
             using (var conn = Connection)
