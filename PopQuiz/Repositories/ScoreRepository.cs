@@ -19,9 +19,9 @@ namespace PopQuiz.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-insert                  into score (Score, QuizId, UserId)
-output                  inserted.Id
-Values                  (@score, @quizId, @userId)";
+        insert into score (Score, QuizId, UserId)
+        output inserted.Id
+        Values (@score, @quizId, @userId)";
 
                     DbUtils.AddParameter(cmd, "@score", score.MyScore);
                     DbUtils.AddParameter(cmd, "@quizId", score.QuizId);
