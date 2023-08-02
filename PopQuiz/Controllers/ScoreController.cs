@@ -23,6 +23,17 @@ namespace PopQuiz.Controllers
             return Ok(_scoreRepository.GetAllFromQuiz(quizId));
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var score = _scoreRepository.GetById(id);
+            if(score == null)
+            {
+                return NotFound();
+            }
+            return Ok(score);
+        }
+
         [HttpPost("add")]
 
         public IActionResult Post(Score score)

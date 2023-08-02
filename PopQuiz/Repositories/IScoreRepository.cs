@@ -7,5 +7,7 @@ namespace PopQuiz.Repositories
     {
         void Add(Score score);
         public List<Score> GetAllFromQuiz(int quizId);
+
+        public Score GetById(int id);
     }
 }

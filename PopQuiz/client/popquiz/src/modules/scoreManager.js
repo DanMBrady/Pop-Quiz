@@ -14,3 +14,8 @@ export const addScore = (score)=>{
         body: JSON.stringify(score)
     });
 };
+
+export const getScoreById =(id)=>{
+    return fetch(`${baseUrl}/${id}`)
+    .then((res)=>res.json())
+}
