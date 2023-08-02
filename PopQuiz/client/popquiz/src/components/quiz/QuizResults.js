@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getAllScores } from "../../modules/scoreManager"
 import"./QuizResults.css"
+import { Card } from "reactstrap"
 
 export const QuizResults =()=>{
     const {id}=useParams()
@@ -14,20 +15,35 @@ export const QuizResults =()=>{
         }
     },[])
    
-    return <article>
-        <h1> Quiz Results</h1>
-        
-        <h3>Top 10 Scores</h3>
+    return <div className="resultsDiv">
+       
+        <div className="myScoreDiv">
         {
             scores?.map(s=>{
                 {
                     
                     if(s.id === parseInt(scoreId)){
-                        return <section className="myScore" key={s.id}>User: {s?.user?.displayName}  Score: {s.myScore}</section>
+                        return <section key={s.id}>You Scored {s.myScore} Points</section>
                     }
                 }
-                return <section key={s.id}>User: {s?.user?.displayName}  Score: {s.myScore}</section>
+               
+             } )
+                
+        }
+        </div>
+      <div className="leaderboardDiv">
+        <section className="myScore">Leaderboard</section>
+        {
+            scores?.map(s=>{
+                {
+                    
+                    if(s.id === parseInt(scoreId)){
+                        return <section className="myScore" key={s.id}><section className="leader">User:</section><section className="leader">{s?.user?.displayName}</section><section className="leader">Score:</section><section className="leader">{s.myScore} Points</section></section>
+                    }
+                }
+                return <section className="resultSection"key={s.id}><section className="leader">User:</section><section className="leader">{s?.user?.displayName}</section><section className="leader">Score:</section><section className="leader">{s.myScore} Points</section></section>
             })
         }
-    </article>
+        </div>
+    </div>
 }

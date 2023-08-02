@@ -1,3 +1,54 @@
 .myScore{
-color:blue
+background:#07172e;
+color:white;
+font-weight: 600;
+border: 1px solid black;
+height: 40px;
+display: flex;
+justify-content: space-around;
+font-size: larger;
+align-items: center;
 }
+.resultSection{
+   border: 1px solid black;
+   height: 40px;
+   display: flex;
+   justify-content: space-around;
+   font-size: larger;
+   align-items: center;
+  
+}
+
+.leader{
+   padding-left: 100px;
+    width:25%;
+}
+.resultsDiv{
+    background: rgb(240, 238, 238);
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.myScoreDiv{
+    background:#143363;
+    color: white;
+    width:40%;
+    height:120px;
+    margin-top: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.leaderboardDiv{
+    background:#143363;
+    color: white;
+    margin-top: 20px;
+    width: 70%;
+    height: 440px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+}
+
+
