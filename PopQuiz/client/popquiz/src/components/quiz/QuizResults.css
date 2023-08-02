@@ -31,18 +31,32 @@ align-items: center;
     align-items: center;
    
 }
+.myScoreOuter{
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: xx-large;
+   font-weight: 600;
+    width:100%;
+   
+}
 
 .myScoreDiv{
     background:#143363;
+    background-image: linear-gradient(to bottom right,#081f3f, #3561a3);
     color: white;
     width:40%;
     height:120px;
     margin-top: 40px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    border: 3px solid #052147;
 }
 
 .leaderboardDiv{
-    background:#143363;
+    background-image: linear-gradient(to bottom right,#081f3f, #3561a3);
     color: white;
     margin-top: 20px;
     width: 70%;

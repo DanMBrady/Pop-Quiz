@@ -23,7 +23,7 @@ export const QuizResults =()=>{
                 {
                     
                     if(s.id === parseInt(scoreId)){
-                        return <section key={s.id}>You Scored {s.myScore} Points</section>
+                        return <section key={s.id} className="myScoreOuter">You Scored {s.myScore} Points</section>
                     }
                 }
                
