@@ -27,7 +27,8 @@ namespace PopQuiz.Repositories
                             FirebaseId = DbUtils.GetString(reader, "FirebaseId"),
                             Name = DbUtils.GetString(reader, "Name"),
                             DisplayName = DbUtils.GetString(reader, "DisplayName"),
-                            Email = DbUtils.GetString(reader, "Email")
+                            Email = DbUtils.GetString(reader, "Email"),
+                            IsAdmin = reader.GetBoolean(reader.GetOrdinal("Admin")),
                         };
                     }
                     conn.Close();
@@ -43,9 +44,9 @@ namespace PopQuiz.Repositories
                 conn.Open();
                 using( var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"Insert into [User] (Name, Email, FirebaseId, DisplayName)
+                    cmd.CommandText = @"Insert into [User] (Name, Email, FirebaseId, DisplayName, Admin)
                                         Output Inserted.Id
-                                        Values (@name, @email, @firebaseId, @displayName)";
+                                        Values (@name, @email, @firebaseId, @displayName, 0)";
                     DbUtils.AddParameter(cmd, "@name", user.Name);
                     DbUtils.AddParameter(cmd, "@email", user.Email);
                     DbUtils.AddParameter(cmd, "@firebaseId", user.FirebaseId);
