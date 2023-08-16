@@ -24,7 +24,7 @@ export const Profile =({ userProfile })=>{
 
     
 
-    return <div>
+    return <div className="topMargin">
       
     <h3 className="upperQuiz">My Quizzes </h3>
        <div className="quizList">
