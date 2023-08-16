@@ -20,7 +20,7 @@ export const Quizes =() =>{
         getQuizes();
     }, []);
 
-    return <div>
+    return <div className="topMargin">
         <h3 className="upperQuiz">Quizzes</h3>
         <div className="upperQuiz">
         <input placeholder="Search Quizzes" type="text" id="search-id"
