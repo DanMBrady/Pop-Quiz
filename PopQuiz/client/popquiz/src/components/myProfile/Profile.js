@@ -5,21 +5,28 @@ import { Card } from "reactstrap";
 export const Profile =({ userProfile })=>{
     const [quizes, setQuizes] = useState([])
     const [saved,setSaved]=useState([])
-    const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
+    const myUser = userProfile
     
   
 
-    useEffect(()=>{
-        if(userProfile){
-            getAllUserQuizzes(userProfile?.id).then(setQuizes);
+    useEffect(() => {
+        if (myUser) {
+          setLoading(false);
         }
-    },[userProfile]);
-
-    useEffect(()=>{
-        if(userProfile){
-            getSavedQuizzes(userProfile?.id).then(setSaved);
+      }, [myUser]);
+      
+      useEffect(() => {
+        if (!loading) {
+          getAllUserQuizzes(myUser.id).then(setQuizes);
         }
-    },[userProfile]);
+      }, [loading, myUser]);
+      
+      useEffect(() => {
+        if (!loading) {
+          getSavedQuizzes(myUser.id).then(setSaved);
+        }
+      }, [loading, myUser]);
 
 
     

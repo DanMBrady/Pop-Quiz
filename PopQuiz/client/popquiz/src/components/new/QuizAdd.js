@@ -24,7 +24,7 @@ export const QuizAdd =({ userProfile })=>{
              {
                 quiz?.questions.map(question =>{
                     return <div key={question.id}>
-                        <Card><Link to={`/questionEdit/${question.id}`} className="quizLink">{question.myQuestion}-{question.answerOne}-{question.answerTwo}-{question.answerThree}-{question.answerFour}</Link></Card>
+                        <Card><Link to={`/${quiz.id}/questionEdit/${question.id}`} className="quizLink">{question.myQuestion}-{question.answerOne}-{question.answerTwo}-{question.answerThree}-{question.answerFour}</Link></Card>
                         </div>
                 })
                }

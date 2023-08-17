@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { deleteQuiz, getAllQuizQuestions, updateQuiz } from "../../modules/quizManager"
 import { getAllDifficulties } from "../../modules/quizManager"
-export const QuizEdit =()=>{
+export const QuizEdit =({ userProfile })=>{
     const [quiz,setQuiz]=useState()
     const [difficulty,setDiff]=useState([])
     const {id} = useParams()
@@ -48,6 +48,8 @@ export const QuizEdit =()=>{
         })
     }
     return<div className="formOuter">
+        { userProfile?.id === quiz.userCreatedId? 
+       
         <div className="formInner">
 
              <div className="topForm">Edit Quiz</div>
@@ -130,5 +132,6 @@ export const QuizEdit =()=>{
 </form>
 </div>
 </div>
+ : <h3>You did not create this quiz</h3>}
     </div>
 }

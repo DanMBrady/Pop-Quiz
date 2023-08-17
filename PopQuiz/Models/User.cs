@@ -19,5 +19,9 @@ namespace PopQuiz.Models
 
         [Required]
         public string DisplayName { get; set; }
+
+        [Required]
+
+        public Boolean IsAdmin { get; set; }
     }
 }
