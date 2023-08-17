@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { deleteQuestion, getQuestionById, updateQuestion } from "../../modules/questionManager"
-
+import { deleteQuiz, getAllQuizQuestions, updateQuiz } from "../../modules/quizManager"
 
 export const QuestionEdit =({ userProfile })=>{
+const [quiz,setQuiz]=useState()
 const [question, setQuestion] = useState()
 const {id} = useParams()
 const navigate = useNavigate()
@@ -12,10 +13,17 @@ useEffect(()=>{
 getQuestionById(id).then(setQuestion)
 },[])
 
+useEffect(()=>{
+    getAllQuizQuestions(id).then(setQuiz)
+},[])
+
 if(!question){
     return null
 }
    
+if(!quiz){
+    return null
+}
 const deleteButton = (evt)=>{
     evt.preventDefault()
     deleteQuestion(question.id)
@@ -33,6 +41,7 @@ const buttonEvent = (event) =>{
     })
 }
    return <div className="formOuter">
+     { userProfile?.id === quiz.userCreatedId? 
 
     <div className="qFormInner">
         <div className="topForm">Edit Question</div>
@@ -147,5 +156,6 @@ const buttonEvent = (event) =>{
             </div>
 
   </div>
+  : <h3>You did not create this quiz</h3>}
     </div>
 }
